@@ -5,14 +5,7 @@ export default function Home() {
   console.log("hello from server side")
   return (
     <div>
-      <SignedOut>
-
-        <SignUpButton />
-      </SignedOut>
-
-      <SignedIn>
-        <SignOutButton />
-      </SignedIn>
+  hello
     </div>
   );
 }
