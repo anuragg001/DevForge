@@ -48,9 +48,9 @@ http.route({
 
         const eventType=evt.type;
         if(eventType ==="user.created"){
+            
             //save the user to database
             const {id,email_addresses,first_name,last_name}=evt.data
-
             const email= email_addresses[0].email_address;
             const name = `${first_name || ""} ${last_name || ""}`.trim();
 
@@ -66,7 +66,7 @@ http.route({
                 return new Response ("Error creating user.",{status:500});
             }
         }
-        return new Response("Webhook processed successfully.",{status:200})
+        return new Response("Webhook processed succesfully.",{status:200})
     }),
 })
 
