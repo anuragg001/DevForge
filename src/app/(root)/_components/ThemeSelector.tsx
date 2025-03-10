@@ -130,4 +130,4 @@ function ThemeSelector() {
   )
 }
 
-export default ThemeSelector
+export default ThemeSelector;
