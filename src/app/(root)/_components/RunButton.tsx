@@ -10,7 +10,13 @@ function RunButton() {
   const { user } = useUser();
   const { runCode, isRunning, language, executionResult } = useCodeEditorStore();
 
-  const handleRun = async () => { };
+  const handleRun = async () => { 
+    await runCode();
+
+    if(user && executionResult){
+      //todo :save the result into database
+    }
+  };
   return (
     <motion.button
       onClick={handleRun}
