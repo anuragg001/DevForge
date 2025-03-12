@@ -8,9 +8,10 @@ import RunningCodeSkeleton from "./RunningCodeSkeleton";
 
 
 const OutputPanel = () => {
-  const { output, isRunning, error } = useCodeEditorStore();
+  const { output, isRunning, error, userInput, setUserInput } = useCodeEditorStore();
   const [isCopied, setIsCopied] = useState(false)
   const hasContent = error || output
+
 
   const handleCopy = async () => {
     if (!hasContent) return;
@@ -50,6 +51,17 @@ const OutputPanel = () => {
             )}
           </button>
         )}
+      </div>
+       {/* User Input Field */}
+       <div className="mb-4">
+        <label className="text-sm text-gray-300">User Input (stdin):</label>
+        <textarea
+          className="w-full mt-1 p-2 bg-[#1e1e2e] text-gray-300 rounded-md border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          rows={3}
+          value={userInput}
+          onChange={(e) => setUserInput(e.target.value)}
+          placeholder="Enter input for your program..."
+        />
       </div>
 
       {/* Output Area */}
