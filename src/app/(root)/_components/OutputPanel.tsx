@@ -4,12 +4,14 @@ import { useCodeEditorStore } from "@/store/useCodeEditorStore"
 import { AlertTriangle, CheckCircle, Clock, Copy, Terminal } from "lucide-react";
 import { useState } from "react";
 import RunningCodeSkeleton from "./RunningCodeSkeleton";
+import ShareSnippetDialog from "./ShareSnippetDialog";
 
 
 
 const OutputPanel = () => {
   const { output, isRunning, error, userInput, setUserInput } = useCodeEditorStore();
   const [isCopied, setIsCopied] = useState(false)
+  const [isShareDialogOpen,setIsShareDialogOpen]= useState(false);
   const hasContent = error || output
 
 
@@ -98,6 +100,7 @@ const OutputPanel = () => {
           )}
         </div>
       </div>
+      {isShareDialogOpen && <ShareSnippetDialog onClose={()=>setIsShareDialogOpen(false)} />}
     </div>
   )
 }
