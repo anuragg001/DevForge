@@ -5,6 +5,7 @@ import { useMutation } from "convex/react"
 import { useState } from "react"
 import { api } from "../../../../convex/_generated/api"
 import { X } from "lucide-react"
+import toast from "react-hot-toast"
 
 function ShareSnippetDialog({ onClose }: { onClose: () => void }) {
     const [isSharing,setIsSharing] = useState(false)
@@ -12,7 +13,27 @@ function ShareSnippetDialog({ onClose }: { onClose: () => void }) {
     const { language,getCode,}=useCodeEditorStore()
     const createSnippet = useMutation(api.snippets.createSnippet);
 
-    const handleShare =()=>{};
+    const handleShare = async(e:React.FormEvent)=>{
+        e.preventDefault();
+
+        setIsSharing(true)
+
+
+        try {
+            const code = getCode()
+            await createSnippet({title,language,code})
+            onClose();
+            setTitle("")
+            toast.success("Snippets Shared Successfully")
+
+        } catch (error) {
+            console.log("Error Creating snippets",error)
+            toast.error("Error Creating Snippets")
+
+        }finally{
+            setIsSharing(false)
+        }
+    };
 
 
 
