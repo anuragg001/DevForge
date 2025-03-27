@@ -46,7 +46,7 @@ async function Header() {
                         </div>
                     </Link>
                     {/* Navigation */}
-                    <nav className="flex items-center space-x-1">
+                    {/* <nav className="flex items-center space-x-1">
                         <Link
                             href="/snippets"
                             className="relative group flex items-center gap-2 px-4 py-1.5 rounded-lg text-gray-300 bg-gray-800/50 
@@ -64,7 +64,7 @@ async function Header() {
                                 Snippets
                             </span>
                         </Link>
-                    </nav>
+                    </nav> */}
                 </div>
                 <div className="flex items-center gap-4">
                     <div className="flex items-center gap-3">
